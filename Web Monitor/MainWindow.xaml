@@ -44,7 +44,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Content="Add to jobs" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button Grid.Column="0" Content="Add to jobs" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UI_AddToSettings_AddButton"/>
                             <Button Grid.Column="1" Content="Clear the boxes" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UI_AddToSettings_ClearTextBoxes"/>
                         </Grid>
                     </Grid>
