@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +23,19 @@ namespace Web_Monitor
 
             Timer ccTime = new Timer(timeSync);
             timer_list.Add(ccTime); // we need to add it to list if we want to stop all the tasks
-            ccTime.Elapsed += async (sender, e) => await FetchData(ucd.ID);
+            ccTime.Elapsed += async (sender, e) => await FetchData(ucd);
             // we need to enable auto-reset, this will make it loop
             ccTime.AutoReset = true;
             ccTime.Enabled = true;
         }
 
 
-        public static async Task FetchData(int id) {
-            Console.Write(id);
+        public static async Task FetchData(UI_CronData ucd) {
+            Console.Write(ucd.ID);
+            HtmlWeb www = new HtmlWeb();
+            HtmlDocument docu = await www.LoadFromWebAsync(ucd.SiteName);
+            var node = docu.DocumentNode.SelectNodes("//*[@id=\"wiki - body\"]/div[1]/div[3]");
+            Console.WriteLine(node);
         }
     }
 

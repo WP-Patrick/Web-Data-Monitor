@@ -97,7 +97,7 @@ namespace Web_Monitor
            
 
 
-            if(!db_management.CRON_AddJob(path, sitetoscrape))
+            if(!db_management.CRON_AddJob(sitetoscrape, path))
             {
                 MessageBox.Show("An error has occured while adding the job into job list!");
             }
