@@ -55,6 +55,13 @@
                             
                         </TextBox>
                     </Grid>
+                    
+                    <!-- Grid for showing what data are being in db -->
+                    <Grid Grid.Column="1">
+                        <DataGrid x:Name="UI_DataGrid" Margin="15 0 0 0">
+                            
+                        </DataGrid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Charts">

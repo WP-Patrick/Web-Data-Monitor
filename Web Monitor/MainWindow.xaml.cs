@@ -28,6 +28,9 @@ namespace Web_Monitor
             // Initialize the DB management 
             db_management = new Database_Management();
 
+            // Load the database data
+            UI_CronData_ReloadData();
+
             Log_Add("Program init ok");
         }
 
@@ -115,7 +118,8 @@ namespace Web_Monitor
             {
                 Log_Add("Task database empty!");
                 return;
-            }    
+            }
+            UI_DataGrid.ItemsSource = dataToDisplay; 
         }
 
 

@@ -12,5 +12,7 @@ namespace Web_Monitor
         public string SiteName { get; set; }
         public string Path { get; set; }
         public int FetchTime { get; set; }
+        
+        public bool Enabled { get; set; }
     }
 }

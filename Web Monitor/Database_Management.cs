@@ -30,7 +30,7 @@ namespace Web_Monitor
         /// <param name="path">XPATH/Selector</param>
         /// <param name="fetchtime">Default = 60</param>
         /// <returns>True if all ok, false if task failed</returns>
-        public bool CRON_AddJob(string sitename, string path, int fetchtime = 60)
+        public bool CRON_AddJob(string sitename, string path, int fetchtime = 60, bool enabled = true)
         {
             // If one of the string parameters is empty, do not even bother continuing
             if (string.IsNullOrEmpty(sitename) || string.IsNullOrEmpty(path))
@@ -40,7 +40,8 @@ namespace Web_Monitor
             {
                 SiteName = sitename,
                 Path = path,
-                FetchTime = fetchtime
+                FetchTime = fetchtime,
+                Enabled = enabled
             };
 
 
@@ -98,6 +99,10 @@ namespace Web_Monitor
         [NotNull]
         [Column("FetchTime")]
         public int FetchTime { get; set; }
+
+        [NotNull]
+        [Column("Enabled")]
+        public bool Enabled { get; set; }
     }
 
 }
