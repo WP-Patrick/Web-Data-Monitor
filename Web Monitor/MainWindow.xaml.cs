@@ -20,9 +20,13 @@ namespace Web_Monitor
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Database_Management db_management;
         public MainWindow()
         {
             InitializeComponent();
+            // Initialize the DB management 
+            db_management = new Database_Management();
         }
 
         /// <summary>
@@ -73,6 +77,11 @@ namespace Web_Monitor
                             break;
                     }
                 }
+            }
+
+            if(!db_management.CRON_AddJob("http://localhost:5000", "velkyPath"))
+            {
+                MessageBox.Show("An error has occured while adding the job into job list!");
             }
 
             // debug messages
