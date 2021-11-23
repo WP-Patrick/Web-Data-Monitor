@@ -57,6 +57,26 @@ namespace Web_Monitor
             }
             return true;
         }
+
+        public UI_CronData[] CRON_FetchData()
+        {
+            var query = db.Table<CronJobs>().ToList();
+            UI_CronData[] data = Extensions.InitArr<UI_CronData>(query.Count); // create the data arr based on how many rows were returned by the db
+            int i = 0;
+            foreach (CronJobs cj in query)
+            {
+                // Create a new object and assign all the values to it
+                UI_CronData crdt = new UI_CronData();
+                crdt.FetchTime = cj.FetchTime;
+                crdt.ID = cj.ID;
+                crdt.Path = cj.Path;
+                crdt.SiteName = cj.SiteName;
+                // add it to arr
+                data[i] = crdt;
+                i++;
+            }
+            return data;
+        }
     }
 
 

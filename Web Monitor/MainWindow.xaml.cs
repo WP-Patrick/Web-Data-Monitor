@@ -104,10 +104,18 @@ namespace Web_Monitor
             Log_Add("Add to db ok");
         }
 
-
+        /// <summary>
+        /// Load the Cron data from database to the boxes
+        /// </summary>
         public void UI_CronData_ReloadData()
         {
-
+            UI_CronData[] dataToDisplay =  db_management.CRON_FetchData();
+            // We need to check if it haven't returned empty array
+            if(dataToDisplay.Length == 0)
+            {
+                Log_Add("Task database empty!");
+                return;
+            }    
         }
 
 
