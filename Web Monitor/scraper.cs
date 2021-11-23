@@ -31,11 +31,13 @@ namespace Web_Monitor
 
 
         public static async Task FetchData(UI_CronData ucd) {
-            Console.Write(ucd.ID);
             HtmlWeb www = new HtmlWeb();
             HtmlDocument docu = await www.LoadFromWebAsync(ucd.SiteName);
-            var node = docu.DocumentNode.SelectNodes("//*[@id=\"wiki - body\"]/div[1]/div[3]");
-            Console.WriteLine(node);
+            var node = docu.DocumentNode.SelectNodes(ucd.Path);
+            foreach(var nodes in node)
+            {
+                Console.WriteLine(nodes.InnerText);
+            }
         }
     }
 
