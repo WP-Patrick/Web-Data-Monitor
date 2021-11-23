@@ -59,6 +59,12 @@ namespace Web_Monitor
             return true;
         }
 
+
+
+        /// <summary>
+        ///  Will return all data from the database
+        /// </summary>
+        /// <returns>array of UI_CronData</returns>
         public UI_CronData[] CRON_FetchData()
         {
             var query = db.Table<CronJobs>().ToList();
@@ -77,6 +83,25 @@ namespace Web_Monitor
                 i++;
             }
             return data;
+        }
+
+        /// <summary>
+        ///  This will return only one required data for scraper, search by ID
+        /// </summary>
+        /// <returns>obj ui_crondata</returns>
+        public UI_CronData Scraper_GetData(int id)
+        {
+            var query = db.Table<CronJobs>().Where(i => i.ID == id).ToList();
+            UI_CronData toReturn = new UI_CronData();
+            if (query.Count == 0)
+                return toReturn;
+            toReturn.ID = query[0].ID;
+            toReturn.Path = query[0].Path;
+            toReturn.SiteName = query[0].SiteName;
+            toReturn.FetchTime = query[0].FetchTime;
+            toReturn.Enabled = query[0].Enabled;
+            return toReturn;
+
         }
     }
 

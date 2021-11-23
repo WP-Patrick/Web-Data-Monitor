@@ -58,9 +58,15 @@
                     
                     <!-- Grid for showing what data are being in db -->
                     <Grid Grid.Column="1">
-                        <DataGrid x:Name="UI_DataGrid" Margin="15 0 0 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <DataGrid Grid.Row="0" x:Name="UI_DataGrid" Margin="15 0 0 0">
                             
                         </DataGrid>
+
+                        <Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Start" Click="Start_Button" />
                     </Grid>
                 </Grid>
             </TabItem>

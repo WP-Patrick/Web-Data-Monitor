@@ -21,7 +21,7 @@ namespace Web_Monitor
     public partial class MainWindow : Window
     {
 
-        private Database_Management db_management;
+        public static Database_Management db_management;
         public MainWindow()
         {
             InitializeComponent();
@@ -107,20 +107,20 @@ namespace Web_Monitor
             Log_Add("Add to db ok");
         }
 
+
+        // We will create our array here to be able to load the data from anywhere from the class, not just in ReloadData func
+        private UI_CronData[] dataToDisplay;
+
         /// <summary>
         /// Load the Cron data from database to the boxes
         /// </summary>
         public void UI_CronData_ReloadData()
         {
-            UI_CronData[] dataToDisplay =  db_management.CRON_FetchData();
-            // We need to check if it haven't returned empty array
-            if(dataToDisplay.Length == 0)
-            {
-                Log_Add("Task database empty!");
-                return;
-            }
-            UI_DataGrid.ItemsSource = dataToDisplay; 
+            dataToDisplay = db_management.CRON_FetchData();
+            UI_DataGrid.ItemsSource = dataToDisplay;
+
         }
+
 
 
         /// <summary>
@@ -132,6 +132,13 @@ namespace Web_Monitor
             LogBox.Text += String.Format("{0} => {1}\r\n", DateTime.Now.ToString("HH:mm:ss"), s);
         }
 
-
+        private void Start_Button(object sender, RoutedEventArgs e)
+        {
+            foreach(UI_CronData ucd in dataToDisplay)
+            {
+                scraper.LaunchScraperInstance(ucd);
+                Log_Add(String.Format("Instance of '{0}' has been launched!", ucd.ID));
+            }
+        }
     }
 }
