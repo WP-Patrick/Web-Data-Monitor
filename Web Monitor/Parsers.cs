@@ -10,19 +10,19 @@ namespace Web_Monitor
     {
         /// <summary>
         /// Converts the string to dictionary of parameters used for configuring the job
-        /// The string is splitted by ,
+        /// The string is split by ,
         /// </summary>
-        /// <param name="ov"></param>
+        /// <param name="optionalValues"></param>
         /// <returns></returns>
-        public static Dictionary<string, string> AddToSettings_OptionalValues(string ov)
+        public static Dictionary<string, string> AddToSettings_OptionalValues(string optionalValues)
         {
             Dictionary<string, string> toReturn = new Dictionary<string, string>();
             // This will indicate that something is wrong and that we do not even bother checking the other conditions
             // if = is not in the string, then the whole string with arguments is invalid
             // We are also going to check wheter the string is not empty
-            if (!ov.Contains('=') || string.IsNullOrEmpty(ov))
+            if (!optionalValues.Contains('=') || string.IsNullOrEmpty(optionalValues))
                 return toReturn;
-            string[] ov_splitted = ov.Split(','); 
+            string[] ov_splitted = optionalValues.Split(','); 
             foreach(string s in ov_splitted)
             {
                 // Now we need to add the data into dictionary

@@ -77,15 +77,14 @@ namespace Web_Monitor
                     return;
                 }
 
-                // We need to loop through the dictionary to get the values that we need
-                foreach (KeyValuePair<string, string> qva in dict)
+                foreach (KeyValuePair<string, string> pair in dict)
                 {
                     // Here we are going to get our values, this is going to be the best way do it, with switch operator
-                    switch (qva.Key)
+                    switch (pair.Key)
                     {
                         // Any error caused in the case function will result in the whole function stopping, to prevent more errors
                         case "fetchtime":
-                            if (!Int32.TryParse(qva.Value, out fetchtime)) // we are going to safely parse the string to int, in case it fails, we will display an error message
+                            if (!int.TryParse(pair.Value, out fetchtime)) // we are going to safely parse the string to int, in case it fails, we will display an error message
                             {
                                 MessageBox.Show("Unable to parse parameter 'fetchtime', argument cannot be string!");
                                 return;
@@ -102,7 +101,7 @@ namespace Web_Monitor
                 MessageBox.Show("An error has occured while adding the job into job list!");
             }
 
-            UI_CronData_ReloadData(); // Reload the data from db
+            UI_CronData_ReloadData(); 
             // debug messages
             Log_Add("Add to db ok");
         }
@@ -112,7 +111,7 @@ namespace Web_Monitor
         private UI_CronData[] dataToDisplay;
 
         /// <summary>
-        /// Load the Cron data from database to the boxes
+        /// Load the Cron data from database to the datagrid
         /// </summary>
         public void UI_CronData_ReloadData()
         {

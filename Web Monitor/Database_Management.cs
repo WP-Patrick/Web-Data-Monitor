@@ -36,7 +36,7 @@ namespace Web_Monitor
             if (string.IsNullOrEmpty(sitename) || string.IsNullOrEmpty(path))
                 return false;
             // create a new object of cron jobs
-            CronJobs addjob = new CronJobs
+            CronJobs newJob = new CronJobs
             {
                 SiteName = sitename,
                 Path = path,
@@ -45,10 +45,10 @@ namespace Web_Monitor
             };
 
 
-            // Securely add it to the database, in case of any error, just print it to console and return False
+            // Add to the database, in case of error, just print it to console and return false
             try
             {
-                db.Insert(addjob);
+                db.Insert(newJob);
                 db.Commit();
             }
             catch(Exception e)

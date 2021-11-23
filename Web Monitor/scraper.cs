@@ -26,7 +26,7 @@ namespace Web_Monitor
             ccTime.Elapsed += async (sender, e) => await FetchData(ucd);
             // we need to enable auto-reset, this will make it loop
             ccTime.AutoReset = true;
-            ccTime.Enabled = true;
+            ccTime.Enabled = ucd.Enabled;
         }
 
 
