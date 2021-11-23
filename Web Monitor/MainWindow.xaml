@@ -26,6 +26,9 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Text="Site to scrape:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -47,6 +50,10 @@
                             <Button Grid.Column="0" Content="Add to jobs" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UI_AddToSettings_AddButton"/>
                             <Button Grid.Column="1" Content="Clear the boxes" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UI_AddToSettings_ClearTextBoxes"/>
                         </Grid>
+
+                        <TextBox x:Name="LogBox" IsReadOnly="True" Grid.Row="5" Margin="0 0 0 10">
+                            
+                        </TextBox>
                     </Grid>
                 </Grid>
             </TabItem>
