@@ -78,6 +78,7 @@ namespace Web_Monitor
                 crdt.FetchTime = cj.FetchTime;
                 crdt.ID = cj.ID;
                 crdt.Path = cj.Path;
+                crdt.Enabled = cj.Enabled;
                 crdt.SiteName = cj.SiteName;
                 // add it to arr
                 data[i] = crdt;
