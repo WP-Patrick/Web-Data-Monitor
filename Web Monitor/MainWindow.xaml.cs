@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -158,6 +159,19 @@ namespace Web_Monitor
                 if (!db_management.CRON_UpdateData(ucd))
                     Log_Add("Database entry update has failed!");
             }
+        }
+
+        private void ShowChart(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button)
+            {
+                UI_CronData dataRowView = (UI_CronData)((Button)e.Source).DataContext;
+                Charts chart = new Charts();
+                chart.LoadChart(dataRowView.ID);
+                chart.ShowDialog();
+            }
+            
+
         }
     }
 }
