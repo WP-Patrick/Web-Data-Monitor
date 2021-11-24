@@ -12,13 +12,13 @@ Those arguments are separated by comma (,). The optional arguments are: **fetcht
 
 Example:
 
-![image-20211124111211305](C:\Users\Patrick\AppData\Roaming\Typora\typora-user-images\image-20211124111211305.png)
+![image-20211124111211305](image-20211124111211305.png)
 
 
 
 **Here the instance was launched (that is indicated in log as well):**
 
-![image-20211124111239912](C:\Users\Patrick\AppData\Roaming\Typora\typora-user-images\image-20211124111239912.png)
+![image-20211124111239912](image-20211124111239912.png)
 
 # Buttons explained
 
@@ -36,4 +36,4 @@ Del. all button will everything from the database.
 
 Charts are also available by clicking on chart, the site has to be scrapped before (data need to be in DB).
 
-![image-20211124111412707](C:\Users\Patrick\AppData\Roaming\Typora\typora-user-images\image-20211124111412707.png)
+![image-20211124111412707](image-20211124111412707.png)
