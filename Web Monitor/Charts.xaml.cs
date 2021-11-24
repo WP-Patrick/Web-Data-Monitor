@@ -29,9 +29,6 @@ namespace Web_Monitor
 
         public void LoadChart(int id)
         {
-
-
-
             ((LineSeries)Chart.Series[0]).ItemsSource = db_management.Chart_GetDataByID(id).ToArray();
         }
     }

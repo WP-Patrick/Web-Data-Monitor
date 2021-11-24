@@ -153,6 +153,12 @@ namespace Web_Monitor
             return true;
         }
 
+        /// <summary>
+        /// Gets list of key value pair used for generating charts.. 
+        /// Query is to table ScrapedData
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<KeyValuePair<DateTime, int>> Chart_GetDataByID(int id)
         {
             List<KeyValuePair<DateTime, int>> toReturn = new List<KeyValuePair<DateTime, int>>();
@@ -164,6 +170,18 @@ namespace Web_Monitor
             }
             return toReturn;
         }
+
+        /// <summary>
+        ///  Remove all data from the database, both scrapeddata and cronjobs
+        /// </summary>
+        public void DeleteAllData()
+        {
+            db.DeleteAll<ScrapedData>();
+            db.DeleteAll<CronJobs>();
+
+        }
+
+
     }
 
 

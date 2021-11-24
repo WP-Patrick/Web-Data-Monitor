@@ -161,6 +161,11 @@ namespace Web_Monitor
             }
         }
 
+        /// <summary>
+        /// Function will get what button is calling the function and will get the ID from the object and create a chart
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowChart(object sender, RoutedEventArgs e)
         {
             if(sender is Button)
@@ -172,6 +177,17 @@ namespace Web_Monitor
             }
             
 
+        }
+
+        /// <summary>
+        /// removes data and reloads the ui
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UI_RemoveAllDataFromDB(object sender, RoutedEventArgs e)
+        {
+            db_management.DeleteAllData();
+            UI_CronData_ReloadData();
         }
     }
 }
