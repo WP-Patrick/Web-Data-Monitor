@@ -71,7 +71,7 @@ namespace Web_Monitor
             }
 
             int fetchtime = 60; // in seconds, default time that will be used for syncing
-
+            bool isEnabled = false;
             Dictionary<string, string> dict =  Parsers.AddToSettings_OptionalValues(optionalvalues);
             // We can pretty much ignore if the string is empty as the user doesn't need to specify other args
             if (!string.IsNullOrEmpty(optionalvalues))
@@ -96,13 +96,17 @@ namespace Web_Monitor
                                 return;
                             }
                             break;
+                        case "isEnabled":
+                            if (pair.Value.ToLower() == "enabled")
+                                isEnabled = true;
+                            break;
                     }
                 }
             }
            
 
 
-            if(!db_management.CRON_AddJob(sitetoscrape, path))
+            if(!db_management.CRON_AddJob(sitetoscrape, path, fetchtime, isEnabled))
             {
                 MessageBox.Show("An error has occured while adding the job into job list!");
             }
