@@ -52,7 +52,7 @@ namespace Web_Monitor
         }
 
         /// <summary>
-        /// Save the job to the database and then show a message box that it was succesfull or the task failed to be added
+        /// Save the job to the database and log if the task was ok or failed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
