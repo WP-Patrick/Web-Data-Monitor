@@ -152,6 +152,18 @@ namespace Web_Monitor
             }
             return true;
         }
+
+        public List<KeyValuePair<DateTime, int>> Chart_GetDataByID(int id)
+        {
+            List<KeyValuePair<DateTime, int>> toReturn = new List<KeyValuePair<DateTime, int>>();
+            List<ScrapedData> query = db.Table<ScrapedData>().Where(t => t.ID == id).ToList();
+            foreach(ScrapedData toAdd in query)
+            {
+                KeyValuePair<DateTime, int> td = new KeyValuePair<DateTime, int>(toAdd.Time, toAdd.Value);
+                toReturn.Add(td);
+            }
+            return toReturn;
+        }
     }
 
 

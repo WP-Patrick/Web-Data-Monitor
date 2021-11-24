@@ -1,0 +1,19 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Web_Monitor"
+        xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" x:Class="Web_Monitor.Charts"
+        mc:Ignorable="d"
+        Title="Charts" Height="280" Width="600">
+    <Grid>
+
+        <toolkit:Chart x:Name="Chart" HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightBlue" Width="600" Height="250">
+            <toolkit:Chart.Series>
+                <toolkit:LineSeries Title ="Loaded data" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}"/>
+            </toolkit:Chart.Series>
+        </toolkit:Chart>
+
+    </Grid>
+</Window>

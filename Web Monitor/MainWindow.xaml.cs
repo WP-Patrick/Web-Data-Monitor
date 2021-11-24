@@ -22,9 +22,6 @@ namespace Web_Monitor
     {
 
         // TODO:
-        // Start stop, delete  button
-        // Error handling
-        // Saving to database
         // Graph showing
         // NNotificatiosn sending
 
@@ -37,6 +34,7 @@ namespace Web_Monitor
 
             // Load the database data
             UI_CronData_ReloadData();
+
 
             Log_Add("Program init ok");
         }
