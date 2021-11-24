@@ -29,7 +29,17 @@ namespace Web_Monitor
             ccTime.Enabled = ucd.Enabled;
         }
 
-
+        /// <summary>
+        /// Will loop through the timer_list and kill every instance running
+        /// </summary>
+        public static void KillAllInstances()
+        {
+            foreach(Timer t in timer_list)
+            {
+                t.Stop();
+            }
+            timer_list.Clear();
+        }
         public static async Task FetchData(UI_CronData ucd) {
             HtmlWeb www = new HtmlWeb();
             HtmlDocument docu = await www.LoadFromWebAsync(ucd.SiteName);

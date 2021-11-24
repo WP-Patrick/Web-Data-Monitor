@@ -21,6 +21,13 @@ namespace Web_Monitor
     public partial class MainWindow : Window
     {
 
+        // TODO:
+        // Start stop, delete  button
+        // Error handling
+        // Saving to database
+        // Graph showing
+        // NNotificatiosn sending
+
         public static Database_Management db_management;
         public MainWindow()
         {
@@ -138,6 +145,12 @@ namespace Web_Monitor
                 scraper.LaunchScraperInstance(ucd);
                 Log_Add(String.Format("Instance of '{0}' has been launched!", ucd.ID));
             }
+        }
+
+        private void Stop_Button(object sender, RoutedEventArgs e)
+        {
+            scraper.KillAllInstances();
+            Log_Add("All instances were stopped.");
         }
     }
 }
