@@ -40,14 +40,16 @@ namespace Web_Monitor
             }
             timer_list.Clear();
         }
+
+
         public static async Task FetchData(UI_CronData ucd) {
             HtmlWeb www = new HtmlWeb();
             HtmlDocument docu = await www.LoadFromWebAsync(ucd.SiteName);
             var node = docu.DocumentNode.SelectNodes(ucd.Path);
-            foreach(var nodes in node)
-            {
-                Console.WriteLine(nodes.InnerText);
-            }
+            if (node.Count == 0)
+                return;
+            if (!db_management.ScrapedData_SaveData(ucd.ID, Parsers.GetIntFromStr(node[0].InnerText)))
+                throw new Exception("Scraped data update failed!");
         }
     }
 

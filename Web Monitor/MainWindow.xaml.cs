@@ -152,5 +152,14 @@ namespace Web_Monitor
             scraper.KillAllInstances();
             Log_Add("All instances were stopped.");
         }
+
+        private void ApplyToDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            foreach(UI_CronData ucd in dataToDisplay)
+            {
+                if (!db_management.CRON_UpdateData(ucd))
+                    Log_Add("Database entry update has failed!");
+            }
+        }
     }
 }

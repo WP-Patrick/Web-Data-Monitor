@@ -21,6 +21,7 @@ namespace Web_Monitor
 
             // Create a table if it doesn't exists!
             db.CreateTable<CronJobs>();
+            db.CreateTable<ScrapedData>();
         }
 
         /// <summary>
@@ -103,6 +104,53 @@ namespace Web_Monitor
             return toReturn;
 
         }
+
+        /// <summary>
+        /// Updates the data in database by ID
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>true if ok, false if error occured</returns>
+        public bool CRON_UpdateData(UI_CronData data)
+        {
+            CronJobs crjob = new CronJobs()
+            {
+                ID = data.ID,
+                SiteName = data.SiteName,
+                Path = data.Path,
+                FetchTime = data.FetchTime,
+                Enabled = data.Enabled
+            };
+            try
+            {
+                db.Update(crjob);
+                db.Commit();
+            }
+            catch{
+                return false;
+            }
+            
+            return true;
+        }
+
+        public bool ScrapedData_SaveData(int id, int value)
+        {
+            ScrapedData newData = new ScrapedData()
+            {
+                ID = id,
+                Value = value,
+                Time = DateTime.Now
+            };
+            try
+            {
+                db.Insert(newData);
+                db.Commit();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
 
@@ -128,6 +176,23 @@ namespace Web_Monitor
         [NotNull]
         [Column("Enabled")]
         public bool Enabled { get; set; }
+    }
+
+    [Table("ScraperData")]
+    public class ScrapedData
+    {
+        [NotNull]
+        [Column("ID")]
+
+        public int ID { get; set; }
+
+        [NotNull]
+        [Column("Value")]
+        public int Value { get; set; }
+
+        [NotNull]
+        [Column("TimeStamp")]
+        public DateTime Time { get; set; }
     }
 
 }

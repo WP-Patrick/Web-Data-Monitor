@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Web_Monitor
@@ -33,5 +35,14 @@ namespace Web_Monitor
             }
             return toReturn;
         } 
+
+
+        public static int GetIntFromStr(string s)
+        {
+            string s_replaced = Regex.Replace(s, @"\s+", "");
+            return int.Parse(s_replaced);
+
+        }
+
     }
 }
