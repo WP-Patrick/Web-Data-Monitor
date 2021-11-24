@@ -1,6 +1,7 @@
 # C# Number Scraper with charts
 
 You can set in this program what site to scrape, scrape XPATH (only numbers will be scraped), and optional arguments.
+SQLITE is used for storing the data, which is also automatically created on start.
 
 ### Optional arguments
 
