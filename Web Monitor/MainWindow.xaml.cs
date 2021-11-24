@@ -22,9 +22,6 @@ namespace Web_Monitor
     public partial class MainWindow : Window
     {
 
-        // TODO:
-        // Graph showing
-        // NNotificatiosn sending
 
         public static Database_Management db_management;
         public MainWindow()
@@ -66,7 +63,6 @@ namespace Web_Monitor
             if(string.IsNullOrEmpty(path) || string.IsNullOrEmpty(sitetoscrape))
             {
                 Log_Add("Path or site to scrape is empty!");
-                // log it
                 return;
             }
 
